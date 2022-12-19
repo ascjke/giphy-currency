@@ -1,0 +1,20 @@
+server:
+  port: 8090
+
+giphy:
+  api_key: "qSUHp4SNTs8Iv4Cxwf89ENX9oC08r92e"
+  url: "https://api.giphy.com/v1/gifs/search"
+
+openexchangerates:
+  api_key: "c0281fa76ea64b32b745367ffba65d7c"
+  currency: "rub"
+  url: "https://openexchangerates.org/api/"
+  latest:
+    url: "https://openexchangerates.org/api/latest.json"
+  histroical:
+    url_1: "https://openexchangerates.org/api/historical/"
+    url_2: ".json"
+
+logging:
+  level:
+    ru.borisov.giphycurrency : DEBUG
