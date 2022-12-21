@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Currency rate</title>
+</head>
+<body>
+    <div>
+        Currency:
+        <span th:text="${gifDto.getCurrency().toUpperCase()}"></span>
+    </div>
+    <div>
+        The exchange rate with USD has
+        <span th:text="${gifDto.getCurrencyStatus()}" class="bold"></span>
+        compared to yesterday
+    </div>
+    <div>
+        <img th:src="${gifDto.getGifUrl()}"/>
+    </div>
+    <div>
+        Response time: <span th:text="${responseTime}"></span> ms
+    </div>
+</body>
+</html>
