@@ -9,7 +9,7 @@ according to [build.gradle](build.gradle). The resulting image is 372MB in size.
 
 ```shell
 # Open terminal inside extracted repository folder.
-$ docker docker build -t giphy-currency .
+$ docker build -t giphy-currency .
 ```
 
 **Step 2:** Start a container for the Docker image.
