@@ -3,12 +3,12 @@ Docker must be installed. That's it. You do not need a Java JDK or Gradle instal
 
 
 # Usage and Demo
-**Step 1:** Create the Docker image according to [Dockerfile](Dockerfile).
+**Step 1:** Download repository, extract it. Create the Docker image according to [Dockerfile](Dockerfile).
 This step uses Gradle to build, test, and package the [Java application](src/main/java/ru/borisov/giphycurrency/GiphyCurrencyApplication.java)
 according to [build.gradle](build.gradle). The resulting image is 372MB in size.
 
 ```shell
-# This may take a few minutes.
+# Open terminal inside extracted repository folder.
 $ docker docker build -t giphy-currency .
 ```
 
