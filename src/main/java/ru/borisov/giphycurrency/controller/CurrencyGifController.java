@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.borisov.giphycurrency.dto.CurrencyStatus;
 import ru.borisov.giphycurrency.dto.GifDto;
@@ -22,10 +21,12 @@ public class CurrencyGifController {
 
     @GetMapping("/gif")
     public String getCurrencyGifView(Model model) {
+        long start = System.currentTimeMillis();
         String currencyRateStatus = currencyService.getCurrencyRateStatus();
         GifDto gifDto = getGifDto(currencyRateStatus);
-
+        long responseTime = System.currentTimeMillis() - start;
         model.addAttribute("gifDto", gifDto);
+        model.addAttribute("responseTime", responseTime);
 
         return "currency_gif";
     }

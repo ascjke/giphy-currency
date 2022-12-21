@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import ru.borisov.giphycurrency.client.GifClient;
 
+import java.util.List;
+import java.util.Map;
+
 @Service
 @RequiredArgsConstructor
 @Log4j2
@@ -20,8 +23,14 @@ public class GifServiceImpl implements GifService {
     private String gifApiKey;
 
     @Override
+    public String getGifApiKey() {
+        return gifApiKey;
+    }
+
+    @Override
     public String getGifUrl(String currencyRateStatus) {
         JsonNode node = null;
+        Map<String, List<Object>> map = null;
 
         log.info("Getting GIF from Giphy");
         String responseData = gifClient.getGifResponse(gifApiKey, currencyRateStatus);
@@ -30,7 +39,9 @@ public class GifServiceImpl implements GifService {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        String gifUrl = node.get("data").get((int) (Math.random() * 50)).get("images").get("original").get("url").asText();
+
+        int randomIndex = (int) (Math.random() * node.get("data").size());
+        String gifUrl = node.get("data").get((int) (Math.random() * randomIndex)).get("images").get("original").get("url").asText();
 
         return gifUrl;
     }

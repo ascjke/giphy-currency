@@ -9,7 +9,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import ru.borisov.giphycurrency.client.CurrencyClient;
 
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.TimeZone;
 
 @Service
 @RequiredArgsConstructor
@@ -28,6 +31,16 @@ public class CurrencyServiceImpl implements CurrencyService {
     private String currency;
 
     @Override
+    public String getCurrencyApiKey() {
+        return currencyApiKey;
+    }
+
+    @Override
+    public String getCurrency() {
+        return currency;
+    }
+
+    @Override
     public String getCurrencyRateStatus() {
         double latestExchangeRate = getLatestExchangeRate();
         double yesterdayExchangeRate = getYesterdayExchangeRate();
@@ -42,11 +55,7 @@ public class CurrencyServiceImpl implements CurrencyService {
     }
 
     @Override
-    public String getCurrency() {
-        return currency;
-    }
-
-    private double getLatestExchangeRate() {
+    public double getLatestExchangeRate() {
         JsonNode node = null;
         log.info("Getting latest exchange rate from openexchangerates");
         String responseData = currencyClient.getLatestExchangeRate(currencyApiKey, currency);
@@ -56,12 +65,17 @@ public class CurrencyServiceImpl implements CurrencyService {
             e.printStackTrace();
         }
         double latestExchangeRate = node.get("rates").get(currency.toUpperCase()).asDouble();
-        log.info("{} latest exchange rate is: {}", currency.toUpperCase(), latestExchangeRate);
+        long timestamp = node.get("timestamp").asLong();
+        LocalDateTime actualTime = LocalDateTime.ofInstant(Instant.ofEpochSecond(timestamp),
+                TimeZone.getDefault().toZoneId());
+
+        log.info("The latest (up to time {}) exchange rate of {} is: {}", actualTime, currency.toUpperCase(), latestExchangeRate);
 
         return latestExchangeRate;
     }
 
-    private double getYesterdayExchangeRate() {
+    @Override
+    public double getYesterdayExchangeRate() {
         JsonNode node = null;
         LocalDate yesterday = LocalDate.now().minusDays(MINUS_DAYS);
         log.info("Getting yesterday exchange rate from openexchangerates");
@@ -72,7 +86,11 @@ public class CurrencyServiceImpl implements CurrencyService {
             e.printStackTrace();
         }
         double yesterdayExchangeRate = node.get("rates").get(currency.toUpperCase()).asDouble();
-        log.info("{} exchange rate yesterday({}) was: {}", currency.toUpperCase(), yesterday, yesterdayExchangeRate);
+        long timestamp = node.get("timestamp").asLong();
+        LocalDateTime closedTime = LocalDateTime.ofInstant(Instant.ofEpochSecond(timestamp),
+                TimeZone.getDefault().toZoneId());
+
+        log.info("The yesterday ({}) exchange rate of {} was: {}", closedTime, currency.toUpperCase(), yesterdayExchangeRate);
 
         return yesterdayExchangeRate;
     }

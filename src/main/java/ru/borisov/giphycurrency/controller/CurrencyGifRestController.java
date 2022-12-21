@@ -29,7 +29,7 @@ public class CurrencyGifRestController {
         return new ResponseEntity<>(gifDto, HttpStatus.OK);
     }
 
-    private GifDto getGifDto(String currencyRateStatus) {
+    public GifDto getGifDto(String currencyRateStatus) {
         GifDto gifDto = new GifDto(gifService.getGifUrl(currencyRateStatus));
         gifDto.setCurrency(currencyService.getCurrency());
         if (CURRENCY_STATUSES[0].equals(currencyRateStatus)) {
