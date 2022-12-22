@@ -7,16 +7,34 @@
 <body>
     <div>
         Currency:
-        <span th:text="${gifDto.getCurrency().toUpperCase()}"></span>
+        <span th:text="${currencyGifDto.getCurrency().toUpperCase()}"></span>
     </div>
     <div>
-        The exchange rate with USD has
-        <span th:text="${gifDto.getCurrencyStatus()}" class="bold"></span>
-        compared to yesterday
+        Yesterday
+        (<span th:text="${currencyGifDto.getYesterdayExchangeTime()}"></span>) exchange rate was:
+        1 <span th:text="${currencyGifDto.getCurrency().toUpperCase()}"></span> = <span
+            th:text="${currencyGifDto.getYesterdayExchangeRate()}"></span>
     </div>
     <div>
-        <img th:src="${gifDto.getGifUrl()}"/>
+        The latest
+        (<span th:text="${currencyGifDto.getLatestExchangeTime()}"></span>) exchange rate is:
+        1 <span th:text="${currencyGifDto.getCurrency().toUpperCase()}"></span> = <span
+            th:text="${currencyGifDto.getLatestExchangeRate()}"></span>
     </div>
+    <br><br>
+    <div>
+        The exchange rate of <span th:text="${currencyGifDto.getCurrency().toUpperCase()}"></span> is
+        <td>
+            <span th:if="${currencyGifDto.getCurrencyStatus() == 'rich'}">UP</span>
+            <span th:if="${currencyGifDto.getCurrencyStatus() == 'broke'}">DOWN</span>
+            <span th:if="${currencyGifDto.getCurrencyStatus() == 'so-so'}">UNALTERED</span>
+        </td>
+        against to USD compared to yesterday
+    </div>
+    <div>
+        <img th:src="${currencyGifDto.getGifUrl()}"/>
+    </div>
+    <br><br>
     <div>
         Response time: <span th:text="${responseTime}"></span> ms
     </div>

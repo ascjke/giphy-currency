@@ -8,6 +8,8 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import ru.borisov.giphycurrency.client.CurrencyClient;
+import ru.borisov.giphycurrency.dto.CurrencyGifDto;
+import ru.borisov.giphycurrency.repository.ExchangeRateRepository;
 
 import java.time.Instant;
 import java.time.LocalDate;
@@ -22,76 +24,44 @@ public class CurrencyServiceImpl implements CurrencyService {
     private static final String RICH = "rich";
     private static final String BROKE = "broke";
     private static final String SO_SO = "so-so";
-    private static final int MINUS_DAYS = 1;
-    private final CurrencyClient currencyClient;
-    private final ObjectMapper mapper;
-    @Value("${openexchangerates.api_key}")
-    private String currencyApiKey;
-    @Value("${openexchangerates.currency}")
-    private String currency;
+    private final CurrencyGifDto currencyGifDto;
+    private final ExchangeRateRepository exchangeRateRepository;
 
     @Override
     public String getCurrencyApiKey() {
-        return currencyApiKey;
+        return exchangeRateRepository.getCurrencyApiKey();
     }
 
     @Override
     public String getCurrency() {
-        return currency;
+        return exchangeRateRepository.getCurrency();
     }
 
-    @Override
-    public String getCurrencyRateStatus() {
+    public CurrencyGifDto getCurrencyGifDto() {
         double latestExchangeRate = getLatestExchangeRate();
         double yesterdayExchangeRate = getYesterdayExchangeRate();
 
         if (latestExchangeRate > yesterdayExchangeRate) {
-            return BROKE;
+            currencyGifDto.setCurrencyStatus(BROKE);
         } else if (latestExchangeRate < yesterdayExchangeRate) {
-            return RICH;
+            currencyGifDto.setCurrencyStatus(RICH);
         } else {
-            return SO_SO;
+            currencyGifDto.setCurrencyStatus(SO_SO);
         }
+        currencyGifDto.setCurrency(getCurrency());
+
+        return currencyGifDto;
     }
 
     @Override
     public double getLatestExchangeRate() {
-        JsonNode node = null;
-        log.info("Getting latest exchange rate from openexchangerates");
-        String responseData = currencyClient.getLatestExchangeRate(currencyApiKey, currency);
-        try {
-            node = mapper.readTree(responseData);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-        double latestExchangeRate = node.get("rates").get(currency.toUpperCase()).asDouble();
-        long timestamp = node.get("timestamp").asLong();
-        LocalDateTime actualTime = LocalDateTime.ofInstant(Instant.ofEpochSecond(timestamp),
-                TimeZone.getDefault().toZoneId());
 
-        log.info("The latest (up to time {}) exchange rate of {} is: {}", actualTime, currency.toUpperCase(), latestExchangeRate);
-
-        return latestExchangeRate;
+        return exchangeRateRepository.getLatestExchangeRate();
     }
 
     @Override
     public double getYesterdayExchangeRate() {
-        JsonNode node = null;
-        LocalDate yesterday = LocalDate.now().minusDays(MINUS_DAYS);
-        log.info("Getting yesterday exchange rate from openexchangerates");
-        String responseData = currencyClient.getYesterdayExchangeRate(yesterday.toString(), currencyApiKey, currency);
-        try {
-            node = mapper.readTree(responseData);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-        double yesterdayExchangeRate = node.get("rates").get(currency.toUpperCase()).asDouble();
-        long timestamp = node.get("timestamp").asLong();
-        LocalDateTime closedTime = LocalDateTime.ofInstant(Instant.ofEpochSecond(timestamp),
-                TimeZone.getDefault().toZoneId());
 
-        log.info("The yesterday ({}) exchange rate of {} was: {}", closedTime, currency.toUpperCase(), yesterdayExchangeRate);
-
-        return yesterdayExchangeRate;
+        return exchangeRateRepository.getYesterdayExchangeRate();
     }
 }

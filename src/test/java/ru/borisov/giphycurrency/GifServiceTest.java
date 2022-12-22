@@ -1,6 +1,8 @@
 package ru.borisov.giphycurrency;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.RepeatedTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -25,11 +27,11 @@ public class GifServiceTest {
 
     @BeforeAll
     static void setUp() {
-        currencyRateStatuses = new String[] {"rich", "broke", "so-so"};
+        currencyRateStatuses = new String[]{"rich", "broke", "so-so"};
         gifUrls = new String[]
                 {"https://media1.giphy.com/media/LdOyjZ7io5Msw/giphy.gif?cid=1eb9b1efexdppscjglhe3xwsj5e1benua7zpego5cfve2dut&rid=giphy.gif&ct=g", // 0 - rich
-                "https://media2.giphy.com/media/ZGH8VtTZMmnwzsYYMf/giphy.gif?cid=1eb9b1efvh9v8s0n3mhk1kmyzhasivu6g7l82vu830bkbt85&rid=giphy.gif&ct=g", // 1 - broke
-                "https://media2.giphy.com/media/Lk023zZqHJ3Zz4rxtV/giphy.gif?cid=1eb9b1efppgdv9xwqgoiarhg44qjv9e4oe6wddcuenaui98l&rid=giphy.gif&ct=g"}; // 2 -so-so
+                        "https://media2.giphy.com/media/ZGH8VtTZMmnwzsYYMf/giphy.gif?cid=1eb9b1efvh9v8s0n3mhk1kmyzhasivu6g7l82vu830bkbt85&rid=giphy.gif&ct=g", // 1 - broke
+                        "https://media2.giphy.com/media/Lk023zZqHJ3Zz4rxtV/giphy.gif?cid=1eb9b1efppgdv9xwqgoiarhg44qjv9e4oe6wddcuenaui98l&rid=giphy.gif&ct=g"}; // 2 -so-so
     }
 
     @AfterEach

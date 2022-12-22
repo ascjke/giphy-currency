@@ -13,3 +13,12 @@ openexchangerates:
 logging:
   level:
     ru.borisov.giphycurrency.client : DEBUG
+
+caches:
+  caffeines:
+    - name: latestExchangeRate
+      expiryInHours: 1
+    - name: yesterdayExchangeRate
+      expiryInHours: 1
+    - name: gifs
+      expiryInHours: 24
