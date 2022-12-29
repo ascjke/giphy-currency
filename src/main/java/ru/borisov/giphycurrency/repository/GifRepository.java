@@ -21,7 +21,7 @@ public class GifRepository {
     @Value("${giphy.api_key}")
     private String gifApiKey;
 
-    @Cacheable("gifs")
+//    @Cacheable("gifs")
     public JsonNode getDataJsonNode(String currencyRateStatus) {
         JsonNode node = null;
         log.info("Getting GIF from Giphy");

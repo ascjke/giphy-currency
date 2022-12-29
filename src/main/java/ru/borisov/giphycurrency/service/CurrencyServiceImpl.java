@@ -21,6 +21,8 @@ public class CurrencyServiceImpl implements CurrencyService {
     private static final String SO_SO = "so-so";
     private final CurrencyGifDto currencyGifDto;
     private final ExchangeRateRepository exchangeRateRepository;
+    private double yesterdayExchangeRate;
+    private double latestExchangeRate;
 
     @Override
     public String getCurrencyApiKey() {
@@ -34,9 +36,17 @@ public class CurrencyServiceImpl implements CurrencyService {
 
 
     public CurrencyGifDto getCurrencyGifDto() {
-        double yesterdayExchangeRate = getYesterdayExchangeRate().join();
-        double latestExchangeRate = getLatestExchangeRate().join();
+        CompletableFuture.runAsync(this::getYesterdayExchangeRate);
+        CompletableFuture.runAsync(this::getLatestExchangeRate);
 
+//        double yesterdayExchangeRate = getYesterdayExchangeRate().join();
+//        double latestExchangeRate = getLatestExchangeRate().join();
+
+        try {
+            Thread.sleep(1400);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
 
         if (latestExchangeRate > yesterdayExchangeRate) {
             currencyGifDto.setCurrencyStatus(BROKE);
@@ -52,15 +62,16 @@ public class CurrencyServiceImpl implements CurrencyService {
 
     @Override
     @Async
-    public CompletableFuture<Double> getLatestExchangeRate() {
-
-        return CompletableFuture.completedFuture(exchangeRateRepository.getLatestExchangeRate());
+    public void getLatestExchangeRate() {
+        latestExchangeRate = exchangeRateRepository.getLatestExchangeRate();
+//        return CompletableFuture.completedFuture(exchangeRateRepository.getLatestExchangeRate());
     }
 
     @Override
     @Async
-    public CompletableFuture<Double> getYesterdayExchangeRate() {
+    public void getYesterdayExchangeRate() {
+        yesterdayExchangeRate = exchangeRateRepository.getYesterdayExchangeRate();
+//        return CompletableFuture.completedFuture(exchangeRateRepository.getYesterdayExchangeRate());
 
-        return CompletableFuture.completedFuture(exchangeRateRepository.getYesterdayExchangeRate());
     }
 }
