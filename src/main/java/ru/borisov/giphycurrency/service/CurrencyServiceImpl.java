@@ -1,24 +1,19 @@
 package ru.borisov.giphycurrency.service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Service;
-import ru.borisov.giphycurrency.client.CurrencyClient;
 import ru.borisov.giphycurrency.dto.CurrencyGifDto;
 import ru.borisov.giphycurrency.repository.ExchangeRateRepository;
 
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.TimeZone;
+import java.util.concurrent.CompletableFuture;
 
 @Service
 @RequiredArgsConstructor
 @Log4j2
+@EnableAsync
 public class CurrencyServiceImpl implements CurrencyService {
 
     private static final String RICH = "rich";
@@ -37,9 +32,11 @@ public class CurrencyServiceImpl implements CurrencyService {
         return exchangeRateRepository.getCurrency();
     }
 
+
     public CurrencyGifDto getCurrencyGifDto() {
-        double latestExchangeRate = getLatestExchangeRate();
-        double yesterdayExchangeRate = getYesterdayExchangeRate();
+        double yesterdayExchangeRate = getYesterdayExchangeRate().join();
+        double latestExchangeRate = getLatestExchangeRate().join();
+
 
         if (latestExchangeRate > yesterdayExchangeRate) {
             currencyGifDto.setCurrencyStatus(BROKE);
@@ -54,14 +51,16 @@ public class CurrencyServiceImpl implements CurrencyService {
     }
 
     @Override
-    public double getLatestExchangeRate() {
+    @Async
+    public CompletableFuture<Double> getLatestExchangeRate() {
 
-        return exchangeRateRepository.getLatestExchangeRate();
+        return CompletableFuture.completedFuture(exchangeRateRepository.getLatestExchangeRate());
     }
 
     @Override
-    public double getYesterdayExchangeRate() {
+    @Async
+    public CompletableFuture<Double> getYesterdayExchangeRate() {
 
-        return exchangeRateRepository.getYesterdayExchangeRate();
+        return CompletableFuture.completedFuture(exchangeRateRepository.getYesterdayExchangeRate());
     }
 }

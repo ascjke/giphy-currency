@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.046s</div>
+<div class="counter">0.055s</div>
 <p>duration</p>
 </div>
 </td>
@@ -87,7 +87,7 @@
 <tr>
 <td class="success">Get currencyGifDto 2/3</td>
 <td class="success">getCurrencyGifDtoTest()[2]</td>
-<td class="success">0.004s</td>
+<td class="success">0.003s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -99,7 +99,7 @@
 <tr>
 <td class="success">The latest exchange rate of RUB should be 70.2499997</td>
 <td class="success">getLatestExchangeRateTest()</td>
-<td class="success">0.022s</td>
+<td class="success">0.032s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -113,12 +113,23 @@
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>2022-12-22 15:54:35.206  INFO 241060 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [ru.borisov.giphycurrency.CurrencyServiceTest], using SpringBootContextLoader
-2022-12-22 15:54:35.207  INFO 241060 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [ru.borisov.giphycurrency.CurrencyServiceTest]: no resource found for suffixes {-context.xml, Context.groovy}.
-2022-12-22 15:54:35.207  INFO 241060 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ru.borisov.giphycurrency.CurrencyServiceTest]: CurrencyServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2022-12-22 15:54:35.208  INFO 241060 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ru.borisov.giphycurrency.GiphyCurrencyApplication for test class ru.borisov.giphycurrency.CurrencyServiceTest
-2022-12-22 15:54:35.209  INFO 241060 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
-2022-12-22 15:54:35.210  INFO 241060 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@66314fee, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@14b5325f, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@13404f75, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@6cc90398, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@6b6fd0, org.springframework.test.context.support.DirtiesContextTestExecutionListener@3d718248, org.springframework.test.context.event.EventPublishingTestExecutionListener@2cdb5974, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@8aa5ab4, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@53e4a19e, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@62360a68, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@1450ffa3, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@4e756867, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@38ebc866]
+<pre>15:14:27.135 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+15:14:27.141 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+15:14:27.160 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [ru.borisov.giphycurrency.CurrencyServiceTest] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+15:14:27.166 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [ru.borisov.giphycurrency.CurrencyServiceTest], using SpringBootContextLoader
+15:14:27.168 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [ru.borisov.giphycurrency.CurrencyServiceTest]: class path resource [ru/borisov/giphycurrency/CurrencyServiceTest-context.xml] does not exist
+15:14:27.168 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [ru.borisov.giphycurrency.CurrencyServiceTest]: class path resource [ru/borisov/giphycurrency/CurrencyServiceTestContext.groovy] does not exist
+15:14:27.169 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [ru.borisov.giphycurrency.CurrencyServiceTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+15:14:27.169 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [ru.borisov.giphycurrency.CurrencyServiceTest]: CurrencyServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+15:14:27.195 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [ru.borisov.giphycurrency.CurrencyServiceTest]
+15:14:27.226 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [/home/ascjke/Documents/IdeaProjects/giphy-currency/build/classes/java/main/ru/borisov/giphycurrency/GiphyCurrencyApplication.class]
+15:14:27.227 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration ru.borisov.giphycurrency.GiphyCurrencyApplication for test class ru.borisov.giphycurrency.CurrencyServiceTest
+15:14:27.278 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [ru.borisov.giphycurrency.CurrencyServiceTest]: using defaults.
+15:14:27.279 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+15:14:27.291 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Skipping candidate TestExecutionListener [org.springframework.test.context.transaction.TransactionalTestExecutionListener] due to a missing dependency. Specify custom listener classes or make the default listener classes and their required dependencies available. Offending class: [org/springframework/transaction/TransactionDefinition]
+15:14:27.292 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Skipping candidate TestExecutionListener [org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener] due to a missing dependency. Specify custom listener classes or make the default listener classes and their required dependencies available. Offending class: [org/springframework/transaction/interceptor/TransactionAttribute]
+15:14:27.292 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@3caa4757, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@69c43e48, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@1804f60d, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@3a80515c, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@547e29a4, org.springframework.test.context.support.DirtiesContextTestExecutionListener@1c807b1d, org.springframework.test.context.event.EventPublishingTestExecutionListener@238b521e, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@1b39fd82, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@3e2fc448, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@21680803, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@588ab592, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@c8b96ec, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@4cc61eb1]
+15:14:27.294 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@54e7391d testClass = CurrencyServiceTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@50b8ae8d testClass = CurrencyServiceTest, locations = '{}', classes = '{class ru.borisov.giphycurrency.GiphyCurrencyApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@16746061, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@201b6b6f, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@67ab1c47, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@5b444398, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@c55ba152, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@6f8f9349, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@4b8729ff], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true]], class annotated with @DirtiesContext [false] with mode [null].
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -128,26 +139,26 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.7.6)
 
-2022-12-22 15:54:35.238  INFO 241060 --- [    Test worker] r.b.giphycurrency.CurrencyServiceTest    : Starting CurrencyServiceTest using Java 11.0.17 on ginzzu-rcit with PID 241060 (started by ascjke in /home/ascjke/Documents/IdeaProjects/giphy-currency)
-2022-12-22 15:54:35.239  INFO 241060 --- [    Test worker] r.b.giphycurrency.CurrencyServiceTest    : No active profile set, falling back to 1 default profile: &quot;default&quot;
-2022-12-22 15:54:35.338  INFO 241060 --- [    Test worker] o.s.cloud.context.scope.GenericScope     : BeanFactory id=3e5c03bf-5ffd-3cd1-879a-283a1fe71375
-2022-12-22 15:54:35.592  INFO 241060 --- [    Test worker] r.b.giphycurrency.CurrencyServiceTest    : Started CurrencyServiceTest in 0.377 seconds (JVM running for 2.556)
-2022-12-22 15:54:35.602  INFO 241060 --- [    Test worker] r.b.g.repository.ExchangeRateRepository  : Getting latest exchange rate from openexchangerates
-2022-12-22 15:54:35.612  INFO 241060 --- [    Test worker] r.b.g.repository.ExchangeRateRepository  : The latest (up to time 2022-12-21T09:59:52) exchange rate of RUB is: 70.249997
-2022-12-22 15:54:35.620  INFO 241060 --- [    Test worker] r.b.g.repository.ExchangeRateRepository  : Getting yesterday exchange rate from openexchangerates
-2022-12-22 15:54:35.621  INFO 241060 --- [    Test worker] r.b.g.repository.ExchangeRateRepository  : The yesterday (2022-12-21T08:59:52) exchange rate of RUB was: 68.499901
-2022-12-22 15:54:35.635  INFO 241060 --- [    Test worker] r.b.g.repository.ExchangeRateRepository  : Getting latest exchange rate from openexchangerates
-2022-12-22 15:54:35.636  INFO 241060 --- [    Test worker] r.b.g.repository.ExchangeRateRepository  : The latest (up to time 2022-12-22T09:59:51) exchange rate of RUB is: 71.375003
-2022-12-22 15:54:35.636  INFO 241060 --- [    Test worker] r.b.g.repository.ExchangeRateRepository  : Getting yesterday exchange rate from openexchangerates
-2022-12-22 15:54:35.637  INFO 241060 --- [    Test worker] r.b.g.repository.ExchangeRateRepository  : The yesterday (2022-12-22T17:59:30) exchange rate of RUB was: 72.425
-2022-12-22 15:54:35.642  INFO 241060 --- [    Test worker] r.b.g.repository.ExchangeRateRepository  : Getting latest exchange rate from openexchangerates
-2022-12-22 15:54:35.643  INFO 241060 --- [    Test worker] r.b.g.repository.ExchangeRateRepository  : The latest (up to time 2022-12-22T09:59:51) exchange rate of RUB is: 71.257
-2022-12-22 15:54:35.643  INFO 241060 --- [    Test worker] r.b.g.repository.ExchangeRateRepository  : Getting yesterday exchange rate from openexchangerates
-2022-12-22 15:54:35.643  INFO 241060 --- [    Test worker] r.b.g.repository.ExchangeRateRepository  : The yesterday (2022-12-22T17:59:30) exchange rate of RUB was: 70.5647
-2022-12-22 15:54:35.647  INFO 241060 --- [    Test worker] r.b.g.repository.ExchangeRateRepository  : Getting latest exchange rate from openexchangerates
-2022-12-22 15:54:35.647  INFO 241060 --- [    Test worker] r.b.g.repository.ExchangeRateRepository  : The latest (up to time 2022-12-22T09:59:51) exchange rate of RUB is: 68.4566
-2022-12-22 15:54:35.647  INFO 241060 --- [    Test worker] r.b.g.repository.ExchangeRateRepository  : Getting yesterday exchange rate from openexchangerates
-2022-12-22 15:54:35.647  INFO 241060 --- [    Test worker] r.b.g.repository.ExchangeRateRepository  : The yesterday (2022-12-22T17:59:30) exchange rate of RUB was: 68.4566
+2022-12-29 15:14:27.525  INFO 18104 --- [    Test worker] r.b.giphycurrency.CurrencyServiceTest    : Starting CurrencyServiceTest using Java 11.0.17 on ginzzu-rcit with PID 18104 (started by ascjke in /home/ascjke/Documents/IdeaProjects/giphy-currency)
+2022-12-29 15:14:27.526  INFO 18104 --- [    Test worker] r.b.giphycurrency.CurrencyServiceTest    : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2022-12-29 15:14:27.943  INFO 18104 --- [    Test worker] o.s.cloud.context.scope.GenericScope     : BeanFactory id=dae433be-f540-3dcf-be55-77fca5ad8d0d
+2022-12-29 15:14:28.946  INFO 18104 --- [    Test worker] r.b.giphycurrency.CurrencyServiceTest    : Started CurrencyServiceTest in 1.624 seconds (JVM running for 2.27)
+2022-12-29 15:14:28.971  INFO 18104 --- [         task-1] r.b.g.repository.ExchangeRateRepository  : Getting latest exchange rate from openexchangerates
+2022-12-29 15:14:28.982  INFO 18104 --- [         task-1] r.b.g.repository.ExchangeRateRepository  : The latest (up to time 2022-12-21T09:59:52) exchange rate of RUB is: 70.249997
+2022-12-29 15:14:28.993  INFO 18104 --- [         task-2] r.b.g.repository.ExchangeRateRepository  : Getting yesterday exchange rate from openexchangerates
+2022-12-29 15:14:28.994  INFO 18104 --- [         task-2] r.b.g.repository.ExchangeRateRepository  : The yesterday (2022-12-21T08:59:52) exchange rate of RUB was: 68.499901
+2022-12-29 15:14:29.010  INFO 18104 --- [    Test worker] r.b.g.repository.ExchangeRateRepository  : Getting yesterday exchange rate from openexchangerates
+2022-12-29 15:14:29.011  INFO 18104 --- [    Test worker] r.b.g.repository.ExchangeRateRepository  : The yesterday (2022-12-22T17:59:30) exchange rate of RUB was: 72.425
+2022-12-29 15:14:29.011  INFO 18104 --- [    Test worker] r.b.g.repository.ExchangeRateRepository  : Getting latest exchange rate from openexchangerates
+2022-12-29 15:14:29.011  INFO 18104 --- [    Test worker] r.b.g.repository.ExchangeRateRepository  : The latest (up to time 2022-12-22T09:59:51) exchange rate of RUB is: 71.375003
+2022-12-29 15:14:29.016  INFO 18104 --- [    Test worker] r.b.g.repository.ExchangeRateRepository  : Getting yesterday exchange rate from openexchangerates
+2022-12-29 15:14:29.017  INFO 18104 --- [    Test worker] r.b.g.repository.ExchangeRateRepository  : The yesterday (2022-12-22T17:59:30) exchange rate of RUB was: 70.5647
+2022-12-29 15:14:29.017  INFO 18104 --- [    Test worker] r.b.g.repository.ExchangeRateRepository  : Getting latest exchange rate from openexchangerates
+2022-12-29 15:14:29.017  INFO 18104 --- [    Test worker] r.b.g.repository.ExchangeRateRepository  : The latest (up to time 2022-12-22T09:59:51) exchange rate of RUB is: 71.257
+2022-12-29 15:14:29.021  INFO 18104 --- [    Test worker] r.b.g.repository.ExchangeRateRepository  : Getting yesterday exchange rate from openexchangerates
+2022-12-29 15:14:29.021  INFO 18104 --- [    Test worker] r.b.g.repository.ExchangeRateRepository  : The yesterday (2022-12-22T17:59:30) exchange rate of RUB was: 68.4566
+2022-12-29 15:14:29.021  INFO 18104 --- [    Test worker] r.b.g.repository.ExchangeRateRepository  : Getting latest exchange rate from openexchangerates
+2022-12-29 15:14:29.022  INFO 18104 --- [    Test worker] r.b.g.repository.ExchangeRateRepository  : The latest (up to time 2022-12-22T09:59:51) exchange rate of RUB is: 68.4566
 </pre>
 </span>
 </div>
@@ -159,7 +170,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 7.6</a> at Dec 22, 2022, 3:54:36 PM</p>
+<a href="http://www.gradle.org">Gradle 7.5.1</a> at Dec 29, 2022, 3:14:29 PM</p>
 </div>
 </div>
 </body>

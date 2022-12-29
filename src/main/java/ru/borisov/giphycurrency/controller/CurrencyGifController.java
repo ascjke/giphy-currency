@@ -9,6 +9,9 @@ import ru.borisov.giphycurrency.dto.CurrencyGifDto;
 import ru.borisov.giphycurrency.service.CurrencyService;
 import ru.borisov.giphycurrency.service.GifService;
 
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeoutException;
+
 @Controller
 @RequestMapping(value = "/currency")
 @RequiredArgsConstructor
@@ -18,7 +21,7 @@ public class CurrencyGifController {
     private final CurrencyService currencyService;
 
     @GetMapping("/gif")
-    public String getCurrencyGifView(Model model) {
+    public String getCurrencyGifView(Model model) throws ExecutionException, InterruptedException, TimeoutException {
         long start = System.currentTimeMillis();
         CurrencyGifDto currencyGifDto = currencyService.getCurrencyGifDto();
         String gifUrl = gifService.getGifUrl(currencyGifDto.getCurrencyStatus());

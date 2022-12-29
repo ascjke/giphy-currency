@@ -12,7 +12,7 @@ openexchangerates:
 
 logging:
   level:
-    ru.borisov.giphycurrency.client : DEBUG
+    ru.borisov.giphycurrency.client: DEBUG
 
 caches:
   caffeines:

@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 import java.util.TimeZone;
+import java.util.concurrent.CompletableFuture;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.util.AssertionErrors.assertEquals;
@@ -117,9 +118,9 @@ public class CurrencyServiceTest {
                         "}");
 
         double expected = 70.249997;
-        double actual = currencyService.getLatestExchangeRate();
+        CompletableFuture<Double> actual = currencyService.getLatestExchangeRate();
 
-        assertEquals("Checking latest exchange rate:", expected, actual);
+        assertEquals("Checking latest exchange rate:", expected, actual.join());
     }
 
     @Test
@@ -139,8 +140,8 @@ public class CurrencyServiceTest {
                         "}");
 
         double expected = 68.499901;
-        double actual = currencyService.getYesterdayExchangeRate();
+        CompletableFuture<Double> actual = currencyService.getYesterdayExchangeRate();
 
-        assertEquals("Checking yesterday exchange rate:", expected, actual);
+        assertEquals("Checking yesterday exchange rate:", expected, actual.join());
     }
 }

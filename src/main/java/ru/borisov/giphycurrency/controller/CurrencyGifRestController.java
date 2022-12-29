@@ -10,6 +10,9 @@ import ru.borisov.giphycurrency.dto.CurrencyGifDto;
 import ru.borisov.giphycurrency.service.CurrencyService;
 import ru.borisov.giphycurrency.service.GifService;
 
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeoutException;
+
 
 @RestController
 @RequestMapping("/api/currencyGif")
