@@ -3,20 +3,18 @@ Docker must be installed. That's it. You do not need a Java JDK or Gradle instal
 
 
 # Usage and Demo
-**Step 1:** Download repository, extract it. Create the Docker image according to [Dockerfile](Dockerfile).
-This step uses Gradle to build, test, and package the [Java application](src/main/java/ru/borisov/giphycurrency/GiphyCurrencyApplication.java)
-according to [build.gradle](build.gradle). The resulting image is 372MB in size.
+**Step 1:** Pull docker image, extract it. The resulting image is 188MB in size.
 
 ```shell
 # Open terminal inside extracted repository folder.
-$ docker build -t giphy-currency .
+$ docker pull ascjke/giphy-currency
 ```
 
 **Step 2:** Start a container for the Docker image.
 
 ```shell
 # It will start on port 8090 on your machine.
-$ docker run -d -p 8090:8090 giphy-currency
+$ docker run -d -p 8090:8090 ascjke/giphy-currency
 ```
 
 **Step 3:** Open another terminal and access the example API endpoint.
